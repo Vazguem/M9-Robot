@@ -7,14 +7,23 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Canvas x:Name="canvas" Grid.Row="0"/>
 
-        <Button x:Name="btnIniciaJoc" Grid.Row="1" Content="Inicia Joc" Click="btnIniciaJoc_Click"/>
+
+        <Canvas x:Name="canvas" Grid.Row="1"/>
+        <Button x:Name="btnIniciaJocs" Grid.Row="2" Content="Inicia Joc" Click="btnIniciaJoc" />
+
+
+        <StackPanel Orientation="Vertical"  >
+            <TextBlock FontSize="20" Margin="0,0,-0.957,0"><Run Text="Orientacion :"/></TextBlock>
+            <TextBlock x:Name="robotMoviment" FontSize="20" Background="Red" Padding="2" VerticalAlignment="Top"/>
+        </StackPanel>
+
 
     </Grid>
 </Window>
