@@ -23,5 +23,10 @@ namespace Robot
         {
             InitializeComponent();
         }
+
+        private void btnIniciaJoc_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
