@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="canvas" Grid.Row="0"/>
+
+        <Button x:Name="btnIniciaJoc" Grid.Row="1" Content="Inicia Joc" Click="btnIniciaJoc_Click"/>
+
     </Grid>
 </Window>
