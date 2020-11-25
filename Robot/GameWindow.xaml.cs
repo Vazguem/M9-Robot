@@ -17,7 +17,7 @@ namespace Robot
 {
     public partial class GameWindow : Window,IintercanviEstat
     {
-        private static string estatMoviment;
+        private string estatMoviment;
 
         public const int SNAKE_HEAD_SIZE_WIDTH = 100;
         public const int SNAKE_HEAD_SIZE_HEIGHT = 100;
@@ -29,7 +29,7 @@ namespace Robot
         public GameWindow()
         {
             InitializeComponent();
-            joc = new JocRobot();
+            joc = new JocRobot(this);
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = TimeSpan.FromMilliseconds(500);
@@ -76,10 +76,9 @@ namespace Robot
         }
 
 
-        public static void SetRobotMovimentEstat(String estat)
+        public void SetRobotMovimentEstat(String estat)
         {
             estatMoviment = estat;
-            
         }
 
         public  void IntercanviEstatXaml()
@@ -89,6 +88,6 @@ namespace Robot
     }
     public  interface IintercanviEstat
     {
-        void IntercanviEstatXaml();
+        void SetRobotMovimentEstat(String estat);
     }
 }

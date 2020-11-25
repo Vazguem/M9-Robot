@@ -10,7 +10,7 @@ namespace Robot
 {
     class JocRobot
     {
-        private bool girarDreta=true;
+        //private bool girarDreta=true;
         int contDirecion = 0;//
 
         public const int WIDTH = 5;
@@ -23,9 +23,10 @@ namespace Robot
         DireccioSnake direccio;
         private List<Point> pomes;
         private List<object> bodySnake;
-
-        public JocRobot()
+        IintercanviEstat finestra;
+        public JocRobot(IintercanviEstat finestra)
         {
+            this.finestra = finestra;
             cap = new Point(0, 0);
             caps = new List<Point>();
             direccio = DireccioSnake.Sud;
@@ -75,13 +76,15 @@ namespace Robot
         public void GiraDreta()
         {
             GetDirection(contDirecion);
-            GameWindow.SetRobotMovimentEstat("-->");
+            finestra.SetRobotMovimentEstat("-->");
+            //GameWindow.SetRobotMovimentEstat("-->");
             contDirecion++; 
             contDirecion = contDirecion % 4;
         }
         public void GiraIzqierda()
-        { 
-            GameWindow.SetRobotMovimentEstat("<--");
+        {
+            // GameWindow.SetRobotMovimentEstat("<--");
+            finestra.SetRobotMovimentEstat("<--");
             GetDirection(contDirecion);
             contDirecion--;
             if (contDirecion == 0) contDirecion = 3;//pasem a altre direcio
@@ -91,7 +94,8 @@ namespace Robot
             
             if(cap.X>=0 && cap.Y>=0 && cap.X<200&& cap.Y < 200)
             {
-                GameWindow.SetRobotMovimentEstat("^");
+                //GameWindow.SetRobotMovimentEstat("^");
+                finestra.SetRobotMovimentEstat("^");
                 if (direccio.Equals(DireccioSnake.Nord)) cap.Y--;
                 else if(direccio.Equals(DireccioSnake.Sud)) cap.Y++;
                 else if(direccio.Equals(DireccioSnake.Est)) cap.X--;
@@ -99,7 +103,8 @@ namespace Robot
             }
             else
             {
-                GameWindow.SetRobotMovimentEstat("^ ..!");
+                //GameWindow.SetRobotMovimentEstat("^ ..!");
+                finestra.SetRobotMovimentEstat("^..!");
             }
         }
         public void moure()
