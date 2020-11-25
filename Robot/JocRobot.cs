@@ -54,7 +54,6 @@ namespace Robot
         public void GetDirection(int numero)
         {
             
-            numero = numero % 4;
             switch (numero)
             {
                 case 0:
@@ -75,25 +74,26 @@ namespace Robot
 
         public void GiraDreta()
         {
+            GetDirection(contDirecion);
             GameWindow.SetRobotMovimentEstat("-->");
-            contDirecion++;
-            girarDreta = true;
-            
+            contDirecion++; 
+            contDirecion = contDirecion % 4;
         }
         public void GiraIzqierda()
-        {
+        { 
             GameWindow.SetRobotMovimentEstat("<--");
+            GetDirection(contDirecion);
             contDirecion--;
-            girarDreta = false;
+            if (contDirecion == 0) contDirecion = 3;//pasem a altre direcio
         }
         public void Avanza()
         {
             
-            if(cap.X>0 && cap.Y>0 && cap.X<200&& cap.Y < 200)
+            if(cap.X>=0 && cap.Y>=0 && cap.X<200&& cap.Y < 200)
             {
                 GameWindow.SetRobotMovimentEstat("^");
-                if (direccio.Equals(DireccioSnake.Nord)) cap.Y++;
-                else if(direccio.Equals(DireccioSnake.Sud)) cap.Y--;
+                if (direccio.Equals(DireccioSnake.Nord)) cap.Y--;
+                else if(direccio.Equals(DireccioSnake.Sud)) cap.Y++;
                 else if(direccio.Equals(DireccioSnake.Est)) cap.X--;
                 else cap.X++;
             }
@@ -106,28 +106,19 @@ namespace Robot
         {
             Random rm = new Random();
             int num=rm.Next(0, 100);
-
              
-
             if (num <= 50)//50 % recte
             {
-                if(cap.X<200&& cap.X >= 0) 
-                { 
-                  if(cap.Y<200 && cap.Y>=0)   Avanza();
-                }
-
+                GiraDreta();  
             }
             else if(num<75)
             {
-                GiraIzqierda();
-                if (contDirecion > 0) contDirecion--;//gira restem numero
-                else contDirecion *=-1;
+                Avanza(); 
             }
             else
             {
-                GiraDreta();
-                if (contDirecion > 0) contDirecion++;
-                else contDirecion *= -1;//pasem a positiu
+             
+                GiraIzqierda(); 
             } 
         }
 
