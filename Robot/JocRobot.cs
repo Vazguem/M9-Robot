@@ -19,6 +19,7 @@ namespace Robot
 
 
         private Point cap;
+        private Point caixa;
         List<Point> caps;
         DireccioSnake direccio;
         private List<Point> pomes;
@@ -50,7 +51,8 @@ namespace Robot
 
         public DireccioSnake Direccio { get => direccio; set => direccio = value; }
         public Point Cap { get => cap; set => cap = value; }
-        public List<Point> Pomes { get => pomes; set => pomes = value; }
+        public Point Caixa{ get => caixa; set => cap = value; }
+    public List<Point> Pomes { get => pomes; set => pomes = value; }
 
         public void GetDirection(int numero)
         {
