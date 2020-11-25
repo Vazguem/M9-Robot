@@ -25,6 +25,7 @@ namespace Robot
         DispatcherTimer timer;
         SolidColorBrush brushSnake = new SolidColorBrush(Colors.Green);
         SolidColorBrush brushPoma = new SolidColorBrush(Colors.Red);
+        private UIElement elpoma;
 
         public GameWindow()
         {
@@ -35,7 +36,7 @@ namespace Robot
             timer.Interval = TimeSpan.FromMilliseconds(500);
         }
 
-        
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             //Pintar
@@ -49,21 +50,7 @@ namespace Robot
             Canvas.SetTop(elSnake, joc.Cap.Y * SNAKE_HEAD_SIZE_HEIGHT);
             Canvas.SetLeft(elSnake, joc.Cap.X * SNAKE_HEAD_SIZE_HEIGHT);
             canvas.Children.Add(elSnake);
-
-            /*
-            foreach (var poma in joc.Pomes)
-            {
-                Ellipse elpoma = new Ellipse()
-                {
-                    Fill = brushPoma,
-                    Width = SNAKE_HEAD_SIZE_WIDTH,
-                    Height = SNAKE_HEAD_SIZE_HEIGHT,
-                };
-                Canvas.SetTop(elpoma, poma.Y * SNAKE_HEAD_SIZE_HEIGHT);
-                Canvas.SetLeft(elpoma, poma.X * SNAKE_HEAD_SIZE_HEIGHT);
-                canvas.Children.Add(elpoma);
-            }
-            */
+           
             IntercanviEstatXaml();
             joc.moure();
         }
@@ -71,15 +58,13 @@ namespace Robot
 
         private void btnIniciaJoc(object sender, RoutedEventArgs e)
         {
-            timer.Start();
-
+            timer.Start(); 
         }
 
 
         public static void SetRobotMovimentEstat(String estat)
         {
             estatMoviment = estat;
-            
         }
 
         public  void IntercanviEstatXaml()
